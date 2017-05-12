@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>立体牧马人展示特效</title>
+		<script src="js/jquery-3.2.1.js"></script>
+		<style>
+			body
+			{
+				background: url(img/bg.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.box
+			{
+				height: 400px;
+				width: 960px;
+				margin: 100px auto;
+				position: relative;
+			}
+			.box .pre
+			{
+				width: 180px;
+				height: 400px;
+				position: absolute;
+				bottom: 0;
+			}
+			.box .left
+			{
+				left: 0;
+			}
+			.box .right
+			{
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img src="img/0.jpg" height="400" width="960"/>
+			<div class="pre left"></div>
+			<div class="pre right"></div>
+		</div>
+		<script>
+			var i=0;
+			var timer;
+			function jeep1()
+			{
+				if(i>33)
+				{i=0;}
+				i++;
+				$('.box img').attr('src','img/'+i+'.jpg');
+			}
+			function jeep2()
+			{
+				if(i<1)
+				{i=34;}
+				i--;
+				$('.box img').attr('src','img/'+i+'.jpg');
+			}
+			$('.left').hover(
+				function(){
+					timer=setInterval(jeep1,70);
+				},function(){
+					clearInterval(timer);
+				})
+			$('.right').hover(
+				function(){
+					timer=setInterval(jeep2,70);
+				},function(){
+					clearInterval(timer);
+				})
+		</script>
+	</body>
+</html>
